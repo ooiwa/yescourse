@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
+  # Top Page
   def index
     @courses = Course.all
 
@@ -12,6 +13,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1
   # GET /courses/1.json
+  # Print Page
   def show
     @course = Course.find(params[:id])
 
@@ -33,12 +35,14 @@ class CoursesController < ApplicationController
   end
 
   # GET /courses/1/edit
+  # Edit Page
   def edit
     @course = Course.find(params[:id])
   end
 
   # POST /courses
   # POST /courses.json
+  # select template page
   def create
     @course = Course.new(params[:course])
 

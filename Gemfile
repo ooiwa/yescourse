@@ -45,6 +45,9 @@ gem 'jquery-rails'
 
 gem 'devise'
 
+gem 'bootstrap-sass', '~> 2.3.1.1'
+
+
 group :test, :development do
   gem 'nested_scaffold'
   gem "rails-erd"
