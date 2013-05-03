@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  before_filter :course_by_me, :except => [:index, :show]
+  before_filter :course_by_me, :except => [:index, :show, :new, :mypage, :create]
   
   # GET /courses
   # GET /courses.json
@@ -27,8 +27,14 @@ class CoursesController < ApplicationController
   end
 
   def mypage
-    if not current_user.course.nil?
-      redirect_to current_user.course
+    @course = current_user.course
+    
+    if @course.nil?
+      redirect_to new
+    elsif @course.has_no_theme?
+      redirect_to theme_course_path(@course)
+    else
+      redirect_to edit_course_path(@course)
     end
   end
 
@@ -45,8 +51,19 @@ class CoursesController < ApplicationController
   end
 
   def theme
-    @course = Course.find(params[:id])
+    if request.get?
+      @course = Course.find(params[:id])
+      @themes = Theme.all
+    elsif request.post?
+      @course = Course.find(params[:id])
+
+      theme = Theme.find(params[:theme][:id])
+      @course.update_theme(theme)
+
+      redirect_to edit_course_path @course
+    end
   end
+
 
   # GET /courses/1/edit
   # Edit Page
@@ -58,11 +75,12 @@ class CoursesController < ApplicationController
   # POST /courses.json
   # select template page
   def create
-    @course = Course.new(params[:course])
+    @course = current_user.build_course
+    # @course = Course.new(params[:course])
 
     respond_to do |format|
-      if @course.save
-        format.html { redirect_to edit_course_path @course, notice: 'Course was successfully created.' }
+      if @course.update_attributes(params[:course])
+        format.html { redirect_to mypage_courses_path, notice: 'Course was successfully created.' }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }

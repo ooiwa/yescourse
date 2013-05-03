@@ -1,20 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="row-fluid">
+    <div class="span10">
 
-<p>
-  <b>User:</b>
-  <%= @course.user_id %>
-</p>
+        <div class="cover">
+            
+        </div>
 
-<p>
-  <b>Title:</b>
-  <%= @course.title %>
-</p>
+        <div class="fullcourse <%= @course.theme.css_class_name %>"
+             style="background-image: url(<%= @course.theme.cover.url(:full) %>)">
 
-<p>
-  <b>Theme:</b>
-  <%= @course.theme_id %>
-</p>
+            <div class="course_title">
+                <%= form_for @course do |f| %>
+                    <%= f.text_field :title %>
+                <% end %>
+            </div>
+
+            <% for @dish in @course.dishes %>
+                <%= render "dishes/content"  %>
+            <% end %>
+
+        </div>
+    </div>
+
+    <div class="span2">
+        <button class="btn btn-large btn-block" type="button">Add Picture</button>
+        <button class="btn btn-large btn-block" type="button">Change Background</button>
+        <button class="btn btn-large btn-block" type="button">印刷する</button>
+    </div>
+</div>
 
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>

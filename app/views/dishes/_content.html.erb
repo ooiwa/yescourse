@@ -5,10 +5,10 @@
         </div>
 
         <div class="dish_title">
-            <%= f.text_field :title, :placeholder => @dish.category, :size => 40 %>
+            <%= f.text_field :title, :placeholder => @dish.category, :disabled => true %>
         </div>
         <div class="dish_body">
-            <%= f.text_area :body, :placeholder => "説明文", :rows => 2, :cols => 32 %>
+            <%= f.text_field :body, :placeholder => "説明文" %>
         </div>
     <% end %>
 </div>

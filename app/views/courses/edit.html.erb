@@ -1,6 +1,32 @@
-<h1>Editing course</h1>
+<div>
 
-<%= render 'form' %>
+    <div class="fullcourse <%= @course.theme.css_class_name %>"
+         style="background-image: url(<%= @course.theme.cover.url %>);"
+         >
+        <%= image_tag @course.theme.cover.url, :class => "background-image" %>
 
-<%= link_to 'Show', @course %> |
-<%= link_to 'Back', courses_path %>
+        <div class="course_title">
+            <%= form_for @course do |f| %>
+                <%= f.text_field :title %>
+            <% end %>
+        </div>
+
+        <% for @dish in @course.dishes %>
+            <%= render "dishes/form"  %>
+        <% end %>
+
+    </div>
+</div>
+
+<div class="noprint">
+
+    <hr>
+
+    <div>
+        <%= link_to "作りなおす", theme_course_path(@course) %>
+    </div>
+    <div>
+        <%= link_to "自宅で印刷する", "#",  :onclick => "window.print();" %>
+    </div>
+
+</div>

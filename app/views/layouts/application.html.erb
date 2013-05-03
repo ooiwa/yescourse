@@ -10,64 +10,43 @@
 <body>
 
     <div class="container">
+        <div class="noprint">
 
-        <div class="masthead">
-            <ul class="nav nav-pills pull-right">
+            <div>
+                <h3 class="muted">
+                    <%= link_to "Yes! Course!", root_path %>
+                </h3>
+            </div>
+            <div class="masthead">
                 <% if user_signed_in? %>
-                    <li class="active">
-                        <%= link_to current_user.username, new_course_path  %>
-                    </li>
-                    <li>
-                        <%= link_to "Logout", destroy_user_session_path %>
-                    </li>
+                    <div>
+                        <%= link_to "My Page (" + current_user.username + ")", mypage_courses_path  %>
+                    </div>
+                    <div>
+                        <%= link_to "Logout", destroy_user_session_path, :method => "delete" %>
+                    </div>
                 <% elsif %>
-                    <li class="active">
+                    <div class="active">
                         <%= link_to "Login", new_user_session_path %>
-                    </li>
+                    </div>
                 <% end %>
-            </ul>
-            <h3 class="muted">Yes! Course!</h3>
+            </div>
+
+            <hr>
+
+            <p id="notice"><%= notice %></p>
+
         </div>
-
-        <hr>
-
-        <!--div class="jumbotron">
-            <h1>Super awesome marketing speak!</h1>
-            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <a class="btn btn-large btn-success" href="#">Sign up today</a>
-        </div-->
 
         <%= yield %>
 
+        <div class="noprint">
+            <hr>
 
-        <!--div class="row-fluid marketing">
-            <div class="span6">
-                <h4>Subheading</h4>
-                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-                <h4>Subheading</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-                <h4>Subheading</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            <div class="footer">
+                <p>© トリコース 2013</p>
             </div>
 
-            <div class="span6">
-                <h4>Subheading</h4>
-                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-                <h4>Subheading</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-                <h4>Subheading</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
-            </div>
-        </div-->
-
-        <hr>
-
-        <div class="footer">
-            <p>© トリコース 2013</p>
         </div>
 
     </div>

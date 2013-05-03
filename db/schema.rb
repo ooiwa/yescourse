@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130503121558) do
+ActiveRecord::Schema.define(:version => 20130503135924) do
 
   create_table "courses", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20130503121558) do
 
   create_table "dishes", :force => true do |t|
     t.integer  "course_id",  :null => false
-    t.string   "type"
+    t.string   "category"
     t.string   "title",      :null => false
     t.string   "body"
     t.integer  "index",      :null => false
@@ -37,8 +37,13 @@ ActiveRecord::Schema.define(:version => 20130503121558) do
 
   create_table "themes", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "categories"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "users", :force => true do |t|

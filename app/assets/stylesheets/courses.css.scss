@@ -1,3 +1,163 @@
 // Place all the styles related to the courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.fullcourse{
+    width:172mm !IMPORTANT;
+    height:251mm !IMPORTANT;    
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+    margin: auto;
+    position:relative;
+
+    font-family:'Lucida Grande', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, sans-serif;
+
+    .background-image {
+        position:absolute;
+        left:0;
+        top:0;
+        width:172mm !IMPORTANT;
+        height:251mm !IMPORTANT;    
+        z-index: 0;
+    }
+    
+    > div{
+        position: relative;
+    }
+
+    .course_title {
+
+    }
+
+    .course_dish {
+    
+    }
+
+    input, input:focus, textarea, textarea:focus, span {
+        color: inherit;
+        margin: 0;
+        padding: 0;
+        border:none;
+        box-shadow:none;
+        background-color:transparent;
+        text-align:inherit;
+        font: inherit;
+        overflow:visible;
+        height:inherit;
+        width:inherit;
+        border-radius:0 !important;
+        resize:none;
+    }
+}
+
+
+.theme_simple{
+
+    text-align:center;
+    font-style:italic;
+    font-family: DF行書体,HG行書体,cursive;
+    color: rgb(85, 85, 85);
+
+
+    .course_title {
+        font-size: 30px;
+        padding-top:25px;
+        margin-bottom: 65px;
+        
+    }
+
+    .dish_category {
+        margin-top: 45px;
+        font-size: 25px;
+    }
+
+
+    .dish_title {
+        margin-top: 10px;
+        font-size: 15px;
+    }
+
+    .dish_body {
+        display:none;
+    }
+    
+}
+
+.theme_pink {
+    
+    text-align:left;
+    font-size: 15px;
+
+    > div {
+        padding-left: 250px;
+        width:300px;
+    }
+
+
+    .course_title {
+        font-size: 30px;
+        padding-top: 45px;
+        margin-bottom: 47px;
+        
+    }
+
+    .dish_category {
+        display:none;
+    }
+
+
+    .dish_title {
+        margin-top: 10px;
+        color: black;
+    }
+
+    .dish_body {
+        color: rgb(185, 185, 185);
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+
+}
+
+.theme_ribon{
+
+    text-align:center;
+    font-family: Calibri, DF行書体,HG行書体,cursive;
+    color: rgb(85, 85, 85);
+
+
+    .course_title {
+        font-family: mistral, DF行書体,HG行書体,cursive;
+        font-style:italic;
+        font-size: 30px;
+        padding-top: 55px;
+        margin-bottom: 65px;
+        
+    }
+
+    .dish_category {
+        margin-top: 45px;
+        font-size: 25px;
+        color: rgb(75,108,31);
+        font-weight: bold;
+    }
+
+
+    .dish_title {
+        margin-top: 10px;
+        font-size: 15px;
+        font-style:italic;
+        color: rgb(195,121,141);
+    }
+
+    .dish_body {
+        display:none;
+    }
+    
+}
+
+
+@media print{
+    .noprint { display: none; }
+}

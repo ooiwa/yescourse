@@ -13,3 +13,7 @@
  *= require_tree .
  *= require bootstrap-responsive.css
  */
+
+.container {
+    text-align: center;
+}

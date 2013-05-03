@@ -47,6 +47,8 @@ gem 'devise'
 
 gem 'bootstrap-sass', '~> 2.3.1.1'
 
+gem "paperclip", "~> 3.0"
+
 
 group :test, :development do
   gem 'nested_scaffold'

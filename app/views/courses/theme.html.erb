@@ -1,14 +1,16 @@
 <div class="row-fluid">
-    <div class="span4">
-        <h4>Theme 1</h4>
-        <%= link_to  image_tag("noimage", :class=>"span4"), "selecttheme", :class => "thumbnail"  %>
+    <% for theme in @themes %>
+        <div class="span4">
+            <%= form_for theme, :url => {:action => :theme}, :html => {:method => :post}  do |f| %>
+            <h4><%= theme.title %></h4>
+            <%= f.hidden_field :id %>
+            <p>
+                <%= image_tag theme.cover.url(:medium), :class=>"span4" %>
+            </p>
+            <div class="actions">
+                <%= f.submit %>
+            </div>
+    <% end %>
     </div>
-
-    <div class="span4">
-        <h4>Theme 1</h4>
-    </div>
-
-    <div class="span4">
-        <h4>Theme 1</h4>
-    </div>
+    <% end %>
 </div>

@@ -1,11 +1,9 @@
 Yescourse::Application.routes.draw do
-  resources :themes
-
-
   devise_for :users
 
   resources :dishes
 
+  resources :themes
 
   resources :courses do
     collection do
@@ -13,6 +11,7 @@ Yescourse::Application.routes.draw do
     end
     member do
       get "theme"
+      post "theme"
     end
   end
 

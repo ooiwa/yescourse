@@ -19,6 +19,12 @@
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :theme_id %>
 
+  <div>
+      <% for dish in @course.dishes %>
+          <div><%= dish.category %></div>
+      <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
