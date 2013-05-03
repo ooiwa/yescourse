@@ -1,4 +1,7 @@
 Yescourse::Application.routes.draw do
+  resources :themes
+
+
   devise_for :users
 
   resources :dishes
