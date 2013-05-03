@@ -8,4 +8,16 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  has_one :course
+
+  def username
+    self.email.match(/[^@]*/).to_s
+  end
+
+  def build_course
+    course = super
+    course.theme_id = Theme.default_id
+    return course
+  end
 end

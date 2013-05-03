@@ -1,4 +1,7 @@
 class CoursesController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :course_by_me, :except => [:index, :show]
+  
   # GET /courses
   # GET /courses.json
   # Top Page
@@ -23,15 +26,26 @@ class CoursesController < ApplicationController
     end
   end
 
+  def mypage
+    if not current_user.course.nil?
+      redirect_to current_user.course
+    end
+  end
+
   # GET /courses/new
   # GET /courses/new.json
+  # root of mypage
   def new
-    @course = Course.new
+    @course = current_user.build_course
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @course }
     end
+  end
+
+  def theme
+    @course = Course.find(params[:id])
   end
 
   # GET /courses/1/edit
@@ -48,7 +62,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to @course, notice: 'Course was successfully created.' }
+        format.html { redirect_to edit_course_path @course, notice: 'Course was successfully created.' }
         format.json { render json: @course, status: :created, location: @course }
       else
         format.html { render action: "new" }
@@ -82,6 +96,13 @@ class CoursesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to courses_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+  def course_by_me
+    if current_user.course.id.to_i != params[:id].to_i
+      render :text => "it is not your course"
     end
   end
 end

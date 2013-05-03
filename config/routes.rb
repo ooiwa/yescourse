@@ -7,7 +7,14 @@ Yescourse::Application.routes.draw do
   resources :dishes
 
 
-  resources :courses
+  resources :courses do
+    collection do
+      get "mypage"
+    end
+    member do
+      get "theme"
+    end
+  end
 
 
   # The priority is based upon order of creation:
@@ -59,7 +66,7 @@ Yescourse::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
+  root :to => 'courses#index'
 
   # See how all your routes lay out with "rake routes"
 
