@@ -1,4 +1,7 @@
 Yescourse::Application.routes.draw do
+  resources :dishes
+
+
   resources :courses
 
 

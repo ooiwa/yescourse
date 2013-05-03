@@ -1,0 +1,29 @@
+<h1>Listing dishes</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Title</th>
+    <th>Body</th>
+    <th>Index</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dishes.each do |dish| %>
+  <tr>
+    <td><%= dish.type %></td>
+    <td><%= dish.title %></td>
+    <td><%= dish.body %></td>
+    <td><%= dish.index %></td>
+    <td><%= link_to 'Show', dish %></td>
+    <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
+    <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dish', new_dish_path %>

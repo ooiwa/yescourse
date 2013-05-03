@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Type:</b>
+  <%= @dish.type %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @dish.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @dish.body %>
+</p>
+
+<p>
+  <b>Index:</b>
+  <%= @dish.index %>
+</p>
+
+
+<%= link_to 'Edit', edit_dish_path(@dish) %> |
+<%= link_to 'Back', dishes_path %>
